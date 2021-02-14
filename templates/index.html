@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Flight Price Prediction</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">  
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+     <style>
+      body{
+         text-align: center;
+         padding: 2em;
+         padding-top: 0;
+         padding-bottom: 0;
+         background: #36D1DC;  /* fallback for old browsers */
+         background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+         background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+         background-image: url('https://images.unsplash.com/photo-1573068057232-fa17a193d54d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
+         background-repeat:no-repeat;
+         font-family: 'Bitter', serif;
+
+      }
+      .submit{
+         margin-top: 1.4em;
+      }
+      .jumbotron {
+         margin-top: 0;
+         padding: 2rem 2rem;
+         background: #1c92d2;  /* fallback for old browsers */
+         background: -webkit-linear-gradient(to bottom, #f2fcfe, #1c92d2);  /* Chrome 10-25, Safari 5.1-6 */
+         background: linear-gradient(to bottom, #f2fcfe, #1c92d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+         background-image: url('');
+         background-repeat:no-repeat;  
+         font-family: 'Barlow', sans-serif;
+
+      }
+      form{
+         margin-left: 2em;
+         margin-right: 2em;
+      }
+      .places {
+         width: 60%;
+         margin-left: 20%;
+      }
+     </style>
+   </head>
+
+   <body>
+       <div class="jumbotron jumbotron-fluid">
+         <div class="container">
+            <h1 class="display-4">Flight price Prediction </h1>
+         </div>
+      </div>
+
+
+      <form action="\predict" method="post" class='form'>
+         <!-- departure and Arrival-->
+         <div class="row">
+            <div class="col">
+               <h6> <img src="https://img.icons8.com/ios-filled/20/000000/date-to.png"/> Departure date  </h6>
+               <input type="date" name="depDate" class="form-control" placeholder="First name">
+            </div>
+            <div class="col">
+               <h6><img src="https://img.icons8.com/pastel-glyph/30/000000/time.png"/> Departure time  </h6>
+               <input type="time" name="depTime"class="form-control" placeholder="Last name">
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <h6 class='submit'> <img src="https://img.icons8.com/ios-filled/20/000000/date-to.png"/> Arrival date  </h6>
+               <input type="date" name="arrDate" class="form-control" placeholder="First name">
+            </div>
+            <div class="col">
+               <h6 class='submit'><img src="https://img.icons8.com/pastel-glyph/30/000000/time.png"/> Arrival time  </h6>
+               <input type="time" name="arrTime" class="form-control" placeholder="Last name">
+            </div>
+         </div>
+
+         <!-- Source and destinatoin -->
+          <div class="row">
+            <div class="col">
+               <h6 class='submit'><i class="fas fa-plane-departure"></i> Source  </h6>
+               <select name="Source" class="form-control">
+               <option>Select the origin city </option>
+                  <option>Delhi</option>
+                  <option>kolkata</option>
+                  <option>Mumbai</option>
+                  <option>Chennai</option>
+               </select>
+
+            </div>
+            <div class="col">
+               <h6 class='submit'> <i class="fas fa-plane-arrival"></i>   Destination  </h6>
+               <select name="Source" class="form-control">
+                  <option>Select the destination city </option>
+                  <option>cochin</option>
+                  <option>New Delhi</option>
+                  <option>Delhi</option>
+                  <option>Hyderabed</option>
+                  <option>kolkata</option>
+               </select>
+            </div>
+
+            <div class="col">
+               <h6 class='submit'><img src="https://img.icons8.com/pastel-glyph/20/000000/1-stop-flight--v1.png"/> Stops  </h6>
+               <select name="stops" required="required" class="form-control">
+                  <option value=0>Non-Stop</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+               </select>
+            </div>
+
+         </div>
+
+         <div class="col">
+            <h6 class='submit'><img src="https://img.icons8.com/pastel-glyph/40/000000/non-stop-flight--v2.png"/> Airline  </h6>
+               <select name="airline" class="form-control places">
+               <option>Choose the airline </option>
+               <option>Jet Airways </option>
+               <option>IndiGo</option>
+               <option>Air India</option>
+               <option>Multiple carriers</option>
+               <option>SpiceJet</option>
+         </div>
+         <!--slider airline-->
+
+      <input type="Submit", value="Submit" class='submit'> 
+ 
+      </form>
+      <br>
+
+
+      {%if(p_text == NULL)%}
+      
+      {%else%}
+       
+         <div class="alert alert-success submit" role="alert">
+         <h3>{{p_text}}</h3>
+         </div>
+      {%endif%}
+
+      
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+   </body>
+
+</html>
